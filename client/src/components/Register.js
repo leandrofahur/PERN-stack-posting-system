@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import UserService from "../services/UserService";
 
 const Register = ({ setAuth }) => {
   const [inputs, setInputs] = useState({
@@ -7,8 +7,6 @@ const Register = ({ setAuth }) => {
     email: "",
     password: "",
   });
-
-  const [token, setToken] = useState("");
 
   const { username, email, password } = inputs;
 
@@ -18,14 +16,15 @@ const Register = ({ setAuth }) => {
 
   const onSubmitForm = async (e) => {
     e.preventDefault();
-
     try {
-      const response = await axios.post("http://localhost:5000/user/register", {
+      const response = await UserService.create({
         username,
         email,
         password,
       });
-      setToken(response.data.message);
+
+      localStorage.setItem("token", response.data.message);
+      setAuth(true);
     } catch (error) {
       console.error(error.message);
     }
