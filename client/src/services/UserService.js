@@ -1,8 +1,11 @@
 import api from "../api/axios";
 
 class UserService {
-  create(data) {
-    return api.post("/user/register", data);
+  create(payload) {
+    return api.post("/user/register", payload);
+  }
+  get(payload) {
+    return api.post("/user/login", payload);
   }
 }
 
