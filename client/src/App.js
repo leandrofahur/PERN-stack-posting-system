@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -11,12 +11,28 @@ import Dashboard from "./components/Dashboard";
 import Login from "./components/Login";
 import Register from "./components/Register";
 
+import UserService from "./services/UserService";
+
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const setAuth = (boolean) => {
     setIsAuthenticated(boolean);
   };
+
+  const isAuth = async () => {
+    try {
+      const token = localStorage.getItem("token");
+      const response = await UserService.verify(token);
+      setAuth(response.data);
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
+
+  useEffect(() => {
+    isAuth();
+  }, []);
 
   return (
     <>

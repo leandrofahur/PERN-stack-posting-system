@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import UserService from "../services/UserService";
 import DashboardService from "../services/DashboardService";
 
 const Dashboard = ({ setAuth }) => {
@@ -34,7 +33,10 @@ const Dashboard = ({ setAuth }) => {
           Dashboard{" "}
           <span style={{ textDecoration: "underline" }}>{username}</span>
         </h1>
-        <button className="ui primary button"> Logout</button>
+        <button className="ui primary button" onClick={() => setAuth(false)}>
+          {" "}
+          Logout
+        </button>
       </div>
     </>
   );
