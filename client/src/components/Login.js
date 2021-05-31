@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import UserService from "../services/UserService";
 
 const Login = ({ setAuth }) => {
@@ -70,6 +71,12 @@ const Login = ({ setAuth }) => {
             <button className="ui red button fluid" type="cancel">
               Cancel
             </button>
+          </div>
+          <div style={{ paddingTop: "20px", color: "#fff" }}>
+            Not a member yet?{" "}
+            <Link to="/register" style={{ color: "yellow" }}>
+              Sign up
+            </Link>
           </div>
         </form>
       </div>
