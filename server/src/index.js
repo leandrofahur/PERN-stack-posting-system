@@ -16,6 +16,7 @@ app.use(cors());
 
 // ROUTES:
 app.use("/user", require("./routes/user"));
+app.use("/dashboard", require("./routes/dashboard"));
 
 db.sync();
 
