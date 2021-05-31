@@ -38,8 +38,8 @@ const App = () => {
               exact
               path="/register"
               render={(props) =>
-                !isAuthenticated ? (
-                  <Redirect to="dasboard" />
+                isAuthenticated ? (
+                  <Redirect to="dashboard" />
                 ) : (
                   <Register {...props} setAuth={setAuth} />
                 )
