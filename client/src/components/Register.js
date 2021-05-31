@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import UserService from "../services/UserService";
 
 const Register = ({ setAuth }) => {
@@ -26,8 +27,11 @@ const Register = ({ setAuth }) => {
 
       localStorage.setItem("token", response.data.message);
       setAuth(true);
+      toast.success("Login Successgully!");
     } catch (error) {
       console.error(error.message);
+      setAuth(false);
+      toast.error("Incorrect credentials");
     }
   };
 

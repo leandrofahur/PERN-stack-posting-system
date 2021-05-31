@@ -7,11 +7,16 @@ import {
   Link,
 } from "react-router-dom";
 
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import Dashboard from "./components/Dashboard";
 import Login from "./components/Login";
 import Register from "./components/Register";
 
 import UserService from "./services/UserService";
+
+toast.configure();
 
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);

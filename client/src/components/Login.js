@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import UserService from "../services/UserService";
 
+import { toast } from "react-toastify";
+
 const Login = ({ setAuth }) => {
   const [inputs, setInputs] = useState({
     email: "",
@@ -23,9 +25,12 @@ const Login = ({ setAuth }) => {
       });
 
       localStorage.setItem("token", response.data.message);
+      toast.success("Login Successgully!");
       setAuth(true);
     } catch (error) {
       console.error(error.message);
+      setAuth(false);
+      toast.error("Incorrect credentials");
     }
   };
 
